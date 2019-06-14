@@ -18,12 +18,17 @@
 			var ground = exampleUtils.createPlane( 1, 20, 20, 0, exampleUtils.createMaterial( 'pebbles', 5, 5 ) );
 			ground.castShadow = false;
 
+			var q = new Goblin.Quaternion( 0, 1, 0, 0.25 );
+			q.normalize();
+
 			var spawnBox = function() {
 				var base = exampleUtils.createBox( 1, 1, 1, 10, box_material );
-				base.goblin.position.y = 2;
+				base.goblin.position.y = 8;
+				base.goblin.rotation = new Goblin.Quaternion( q.x, q.y, q.z, q.w );
 
 				var top = exampleUtils.createBox( 1, 1, 1, 10, box_material );
-				top.goblin.position.y = 4;
+				top.goblin.position.y = 6;
+				top.goblin.rotation = new Goblin.Quaternion( q.x, q.y, q.z, q.w );
 
 				var constraint = new Goblin.WeldConstraint(
 					base.goblin,
